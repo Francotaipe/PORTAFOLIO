@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MI PORTAFOLIO | Panel privado</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="assets/logo-upla.png" alt="UPLA">
+    <span class="brand-copy">MI PORTAFOLIO<small>Panel privado · UPLA</small></span>
+  </a>
+  <div class="top-actions">
+    <a class="outline-btn" href="index.html">Ver portafolio</a>
+    <button id="logout" class="top-btn">Cerrar sesión</button>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="side-logo"><img src="assets/logo-upla.png" alt="UPLA"><div><strong>UPLA</strong><span>Mi Portafolio</span></div></div>
+  <nav class="nav">
+    <a class="active" href="#inicio"><span class="nav-icon">⌂</span>Inicio</a>
+    <a href="#cursos"><span class="nav-icon">▤</span>Mis cursos</a>
+    <a href="#trabajos"><span class="nav-icon">▣</span>Mis trabajos</a>
+  </nav>
+  <div class="side-quote">“El esfuerzo de hoy es el éxito de mañana.”</div>
+</aside>
+
+<main class="main">
+<section class="hero" id="inicio">
+  <div class="hero-main">
+    <img class="hero-logo" src="assets/logo-upla.png" alt="UPLA">
+    <div>
+      <div class="panel-label">ÁREA PRIVADA · MI PORTAFOLIO</div>
+      <h1>Bienvenido, <span id="userNameHero">Franco</span></h1>
+      <p>Elige un curso, un período y una semana para administrar tus trabajos.</p>
+      <div class="hero-meta"><span>👤 <b id="userName">Estudiante</b></span><span>🎓 Ingeniería de Sistemas</span><span>📅 2026</span></div>
+    </div>
+  </div>
+  <div class="hero-note">Aquí podrás subir y eliminar trabajos solo en la semana que selecciones.</div>
+</section>
+
+<section class="stats">
+  <article class="stat"><div class="stat-icon blue">▤</div><div><strong>2</strong><span>Cursos registrados</span></div></article>
+  <article class="stat"><div class="stat-icon green">▣</div><div><strong id="totalAdmin">0</strong><span>Trabajos propios</span></div></article>
+  <article class="stat"><div class="stat-icon purple">◫</div><div><strong>4</strong><span>Períodos por curso</span></div></article>
+  <article class="stat"><div class="stat-icon orange">№</div><div><strong>4</strong><span>Semanas por período</span></div></article>
+</section>
+
+<section class="section" id="cursos">
+  <div class="section-title"><h2>Mis cursos</h2><p>Selecciona un curso, después un período y finalmente una semana.</p></div>
+
+  <div class="course-selector-grid">
+    <button class="course-select-card" data-course="desarrollo">
+      <div class="course-badge">⌘</div>
+      <div><strong>Desarrollo de Aplicaciones</strong><span>4 períodos · 16 semanas</span></div>
+      <div class="course-arrow">→</div>
+    </button>
+    <button class="course-select-card purple-course" data-course="algoritmos">
+      <div class="course-badge">▦</div>
+      <div><strong>Algoritmos y Estructura de Datos</strong><span>4 períodos · 16 semanas</span></div>
+      <div class="course-arrow">→</div>
+    </button>
+  </div>
+
+  <div id="privateCourseExplorer" class="course-explorer">
+    <div class="explorer-placeholder">
+      <div class="placeholder-icon">📚</div>
+      <h3>Selecciona un curso</h3>
+      <p>Los períodos y las semanas aparecerán aquí.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trabajos">
+  <div class="section-title"><h2>Administrar semana seleccionada</h2><p>Al seleccionar una semana aparecerán el formulario para subir y los trabajos de esa semana.</p></div>
+
+  <div id="noSelectedWeek" class="explorer-placeholder compact">
+    <div class="placeholder-icon">☝️</div>
+    <h3>Selecciona una semana primero</h3>
+    <p>Los trabajos no se muestran todos juntos: aparecen solo después de elegir una semana.</p>
+  </div>
+
+  <div id="selectedWeekPanel" class="hidden">
+    <div class="week-detail-head">
+      <div><h3 id="selectedWeekTitle">Semana</h3><p id="selectedWeekSub"></p></div>
+      <span id="selectedWeekCount" class="course-count">0 trabajos</span>
+    </div>
+
+    <form id="uploadForm" class="admin-form selected-week-box">
+      <div class="selected-week" id="selectedInfo"></div>
+      <div class="admin-form-grid">
+        <div class="form-group"><label>Título del trabajo</label><input id="titulo" required placeholder="Ejemplo: Actividad 1 - Maven"></div>
+        <div class="form-group"><label>Fecha</label><input id="fecha" type="date"></div>
+      </div>
+      <div class="form-group"><label>Descripción</label><textarea id="descripcion" placeholder="Descripción breve del trabajo"></textarea></div>
+      <div class="form-group"><label>Archivo</label><input id="archivo" type="file" required></div>
+      <button class="primary-btn admin-submit" type="submit">Subir trabajo a esta semana</button>
+      <div id="uploadMsg" class="msg"></div>
+    </form>
+
+    <div class="work-list" id="adminWeekList"></div>
+  </div>
+</section>
+</main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/panel.js"></script>
+</body>
+</html>
